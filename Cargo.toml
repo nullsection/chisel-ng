@@ -1,0 +1,75 @@
+[workspace]
+resolver = "2"
+members = [
+    "chisel-ng-common",
+    "chisel-ng-server",
+    "chisel-ng-client",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["chisel-ng"]
+license = "MIT"
+
+[workspace.dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# SSH - using russh 0.56 with ring backend (avoids cmake/nasm deps)
+russh = { version = "0.56", default-features = false, features = ["ring", "flate2", "rsa"] }
+
+# WebSocket
+tokio-tungstenite = { version = "0.24", default-features = false, features = ["handshake"] }
+tungstenite = "0.24"
+
+# TLS (using ring backend to avoid cmake/nasm dependencies)
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+rustls-pemfile = "2"
+rcgen = { version = "0.13", default-features = false, features = ["ring"] }
+webpki-roots = "0.26"
+
+# Crypto
+rand = "0.8"
+sha2 = "0.10"
+hex = "0.4"
+
+# CLI
+clap = { version = "4", features = ["derive", "env"] }
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# HTTP for WebSocket upgrade
+hyper = { version = "1", features = ["full"] }
+hyper-util = { version = "0.1", features = ["full"] }
+http-body-util = "0.1"
+
+# Utilities
+bytes = "1"
+futures = "0.3"
+futures-util = "0.3"
+async-trait = "0.1"
+pin-project-lite = "0.2"
+
+# CLI
+rustyline = "15"
+chrono = "0.4"
+
+# Release profile optimizations for smaller client binary
+[profile.release]
+opt-level = "z"      # Optimize for size
+lto = true           # Link-time optimization
+strip = true         # Strip symbols
+panic = "abort"      # No unwinding, smaller binary
+codegen-units = 1    # Better optimization
