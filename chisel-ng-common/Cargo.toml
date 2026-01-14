@@ -1,0 +1,19 @@
+[package]
+name = "chisel-ng-common"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+tokio = { workspace = true }
+russh = { workspace = true }
+tungstenite = { workspace = true }
+bytes = { workspace = true }
+futures = { workspace = true }
+futures-util = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
+rand = { workspace = true }
+pin-project-lite = { workspace = true }
+async-trait = { workspace = true }

@@ -1,0 +1,51 @@
+[package]
+name = "chisel-ng-client"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "chisel-client"
+path = "src/main.rs"
+
+[[bin]]
+name = "chisel-bind-client"
+path = "src/bin/chisel-bind-client.rs"
+
+[dependencies]
+chisel-ng-common = { path = "../chisel-ng-common" }
+
+tokio = { workspace = true }
+russh = { workspace = true }
+tokio-tungstenite = { workspace = true }
+tungstenite = { workspace = true }
+tokio-rustls = { workspace = true }
+rustls = { workspace = true }
+webpki-roots = { workspace = true }
+
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+bytes = { workspace = true }
+futures = { workspace = true }
+futures-util = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+rand = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# String obfuscation for release builds
+obfstr = "0.4"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Threading",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_Networking_WinSock",
+]}
