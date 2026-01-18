@@ -44,8 +44,8 @@ A Rust implementation of [chisel](https://github.com/jpillora/chisel) for penetr
 ### Build
 
 ```bash
-git clone https://github.com/nullsection/chisel-ng-private.git
-cd chisel-ng-private
+git clone https://github.com/nullsection/chisel-ng
+cd chisel-ng
 cargo build --release
 ```
 
