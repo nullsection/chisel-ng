@@ -17,7 +17,7 @@ license = "MIT"
 tokio = { version = "1", features = ["full"] }
 
 # SSH - using russh 0.56 with ring backend (avoids cmake/nasm deps)
-russh = { version = "0.56", default-features = false, features = ["ring", "flate2", "rsa"] }
+russh = { version = "0.56", default-features = false, features = ["ring", "flate2"] }
 
 # WebSocket
 tokio-tungstenite = { version = "0.24", default-features = false, features = ["handshake"] }
